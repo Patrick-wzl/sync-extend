@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "ScreenMax Sync",
+  "version": "1.0.0",
+  "description": "Request assistance from another browser on the same URL and sync mouse, wheel, and scroll operations.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_title": "ScreenMax Sync",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_idle"
+    }
+  ]
+}
